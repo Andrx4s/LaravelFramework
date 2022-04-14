@@ -13,10 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/welcome/{page}', function () {
+Route::get('/users', function () {
     return view('welcome');
 })->name('main');
 
 Route::get('/url', function () {
     return 'Route URL' . route('main', ['page' => 25]);
 });
+
+
+/*
+Route::prefix('admin')->group(function () {
+    Route::get('/users', function () {
+        return view('welcome');
+    });
+});
+*/
