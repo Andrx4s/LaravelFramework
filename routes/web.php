@@ -59,24 +59,24 @@ Route::get('/power/{name}', function ($name){
        return $name;
 });
 //8
-Route::prefix('admin')->group(function (){
-    Route::get('{name}', function ($name){
-        if  ($name == 'login'){
-            return $name;
-        }
-        if  ($name == 'logout'){
-            return $name;
-        }
-        if  ($name == 'info'){
-            return $name;
-        }
-        if  ($name == 'color'){
-            return $name;
-        }
-    });
+Route::prefix('/admin')->group(function (){
+    Route::get('/login', function(){
+        return \route('login');
+    })->name('login');
+    Route::get('/logout', function(){
+        return \route('logout');
+    })->name('logout');
+
+    Route::get('/info', function(){
+        return \route('info');
+    })->name('info');
+
+    Route::get('/color', function(){
+        return \route('color');
+    })->name('color');
 });
 //9
-Route::redirect('/admin/web' , '/admin/color', 301);
+Route::redirect('/admin/web' , '/admin/color');
 //10
 Route::get('/color/{hex}', function ($hex){
    return "Цвет: #$hex";
